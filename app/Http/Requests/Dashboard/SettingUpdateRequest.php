@@ -23,12 +23,12 @@ class SettingUpdateRequest extends FormRequest
     {
         return [
             'name'=>'string|nullable',
+            'description' =>'string|nullable|max:100',
             'email' => 'email|nullable',
-            'description' =>'string|nullable',
             'address'=> 'string|nullable',
             'logo'=> 'image|nullable',
             'favicon'=> 'image|nullable',
-            'phone'=> 'integer|nullable|max:70',
+            'phone'=> 'string|nullable',
             'facebook'=> 'string|nullable',
             'youtube'=> 'string|nullable',
             'twitter'=> 'string|nullable',

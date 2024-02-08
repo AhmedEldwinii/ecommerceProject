@@ -20,5 +20,5 @@ Route::get("/admin", [IndexController::class,'index'])->name("admin");
 Route::put("settings/{setting}/update", [SettingController::class , "update"])->name("dashboard.settings.update");
 Route::get("/settings", [SettingController::class , 'index' ])->name("dashboard.settings.index");
 
-
+ 
 

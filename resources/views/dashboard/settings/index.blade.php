@@ -8,22 +8,18 @@
         <!-- /.card-header -->
         <!-- form start -->
         <form action="{{ route('dashboard.settings.update', $setting->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
             @method('put')
-            
-            @if ($errors->any())
-                {!! implode('', $errors->all('<div>:message</div>')) !!}
-            @endif
+            @csrf
 
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputPassword1">Site name</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Site name"
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Site name"
                         name="name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Site descreption</label>
-                    <textarea class="form-control" rows="3" placeholder="Enter ..." name="descreption"></textarea>
+                    <label for="exampleInputPassword1">Site description</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter ..." name="description"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>

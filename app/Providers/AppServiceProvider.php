@@ -19,11 +19,12 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {   if(!app()->runningInConsole()){
+    {
+         if(!app()->runningInConsole()){
         $setting = Setting::firstOr(function(){
             return Setting::create([
                 "name" => "site",
-                'description' =>'description',
+                'description' =>'laravel',
             ]);
         });
         view()->share('setting', $setting);
