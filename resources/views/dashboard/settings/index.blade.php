@@ -15,27 +15,28 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Site name</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Site name"
-                        name="name">
+                        name="name" value="{{ $setting->name }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Site description</label>
-                    <textarea class="form-control" rows="3" placeholder="Enter ..." name="description"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Enter ..." name="description" value="{{ $setting->description }}"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
-                        name="email">
+                        name="email" value="{{ $setting->email }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Phone number</label>
                     <input type="phone" class="form-control" id="exampleInputEmail1" placeholder="Phone number"
-                        name="phone">
+                        name="phone" value="{{ $setting->phone }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Site Logo</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile" name="logo">
+                            <input type="file" class="custom-file-input" id="exampleInputFile" name="logo"
+                                value="{{ $setting->logo }}">
                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </div>
                         <div class="input-group-append">
@@ -47,7 +48,8 @@
                     <label for="exampleInputFile">Photo input</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile" name="favicon">
+                            <input type="file" class="custom-file-input" id="exampleInputFile" name="favicon"
+                                value="{{ $setting->favicon }}">
                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </div>
                         <div class="input-group-append">
@@ -58,7 +60,7 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Address</label>
                     <input type="address" class="form-control" id="exampleInputPassword1" placeholder="1234 main st"
-                        name="address">
+                        name="address" value="{{ $setting->address }}">
                 </div>
                 <div class="form-group">
                     <div class="input-group">
@@ -71,7 +73,7 @@
                             </svg>
                         </span>
                         <input type="text" class="form-control" placeholder="Facebook" aria-label="Input group example"
-                            aria-describedby="basic-addon1" name="facebook">
+                            aria-describedby="basic-addon1" name="facebook" value="{{ $setting->facebook }}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -85,7 +87,7 @@
                             </svg>
                         </span>
                         <input type="text" class="form-control" placeholder="Twitter" aria-label="Input group example"
-                            aria-describedby="basic-addon1" name="twitter">
+                            aria-describedby="basic-addon1" name="twitter" value="{{ $setting->twitter }}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -99,7 +101,8 @@
                             </svg>
                         </span>
                         <input type="text" class="form-control" placeholder="Instagram"
-                            aria-label="Input group example" aria-describedby="basic-addon1" name="instagram">
+                            aria-label="Input group example" aria-describedby="basic-addon1" name="instagram"
+                            value="{{ $setting->instagram }}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -113,7 +116,8 @@
                             </svg>
                         </span>
                         <input type="text" class="form-control" placeholder="Youtube"
-                            aria-label="Input group example" aria-describedby="basic-addon1" name="youtube">
+                            aria-label="Input group example" aria-describedby="basic-addon1" name="youtube"
+                            value="{{ $setting->youtube }}">
                     </div>
                 </div>
                 <div class="form-check">
