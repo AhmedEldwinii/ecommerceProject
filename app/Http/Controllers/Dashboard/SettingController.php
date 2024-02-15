@@ -22,24 +22,16 @@ class SettingController extends Controller
         $setting->update($request->validated());
 
         if ($request->has("logo")){
-            ImageUpload::uploadImage($request->logo);
+            $logo = (ImageUpload::uploadImage($request->logo , 200 , 300 , 'logo/' ));
+            $setting->update(['logo' => $logo]);
+        };
+
+        if ($request->has("favicon")){
+            $favicon = (ImageUpload::uploadImage($request->favicon , 200 , 300 , 'favicon/' ));
+            $setting->update(['favicon' => $favicon]);
         };
 
 
-
-
-
-
-        // $imagename = date("y-m-d"). '.' . $request->logo->extension();
-        // $logo = Image::make($request->logo->path());
-        // $logo->fit(200, 200, function ($constraint) {
-        //     $constraint->upsize();
-        // })->stream();
-        // Storage::disk('public')->put($imagename,$logo);
-
-        // $setting->update(['logo' => 'public/'.$imagename ]);
-
-
-        // return redirect()->route("dashboard.settings.index")->with("success","Update Settings");
+        return redirect()->route("dashboard.settings.index")->with("success","Update Settings");
     }
 }
