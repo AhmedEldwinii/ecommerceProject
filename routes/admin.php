@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Dashboard\IndexController;
 use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\CategoryController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Facade;
 
@@ -17,8 +19,14 @@ use Illuminate\Support\Facades\Facade;
 */
 
 Route::get("/admin", [IndexController::class,'index'])->name("admin");
-Route::put("settings/{setting}/update", [SettingController::class , "update"])->name("dashboard.settings.update");
-Route::get("/settings", [SettingController::class , 'index' ])->name("dashboard.settings.index");
 
- 
+Route::group(["as"=> "dashboard."], function () {
+    Route::put("settings/{setting}/update", [SettingController::class , "update"])->name("settings.update");
+    Route::get("/settings", [SettingController::class , 'index' ])->name("settings.index");
+    Route::get("categories/ajax", [SettingController::class , 'getall'])->name('category.getall');
+
+
+    Route::resource("categories", CategoryController::class);
+});
+
 

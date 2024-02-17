@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('dashboard.settings.index');
+    return view('dashboard.categories.edit');
 })->name('index');
 
 Auth::routes();
