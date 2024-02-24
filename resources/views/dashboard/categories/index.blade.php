@@ -9,6 +9,7 @@
         <!-- Default box -->
         <br>
         <form action="{{ route('dashboard.categories.create') }}">
+            @csrf
             <div class="row">
                 <div class="col-12">
                     <input type="submit" value="Create new category"
@@ -18,33 +19,16 @@
         </div>
         <br>
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Categories</h3>
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
             <div class="card-body p-0">
-                <table class="table table-striped projects">
+                <table class="table table-striped projects" id = "table_id">
                     <thead>
                         <tr>
-                            <th style="width: 1%">
-                                #
-                            </th>
                             <th style="width: 20%">
-                                Project Name
+                                Name
                             </th>
                             <th style="width: 30%">
-                                Team Members
-                            </th>
-                            <th>
-                                Project Progress
+                                Image
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Status
@@ -54,66 +38,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                #
-                            </td>
-                            <td>
-                                <a>
-                                    AdminLTE v3
-                                </a>
-                                <br />
-                                <small>
-                                    Created 01.01.2019
-                                </small>
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar2.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar3.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar4.png">
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="project_progress">
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                                    </div>
-                                </div>
-                                <small>
-                                    57% Complete
-                                </small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    View
-                                </a>
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </a>
-                            </td>
-                        </tr>
+                        {{-- @foreach ($mainCategories as $category)
+                            <tr>
+                                <td></td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->image }}</td>
+                                <td>{{ $category->created_at }}</td>
+                            </tr>
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>
@@ -125,4 +57,73 @@
     <!-- /.content -->
     </div>
 
+    {{-- DELETE --}}
+
+    <div class="modal fade" id ="deletemodal" tabindex ="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="{{ route('dashboard.categories.delete') }}" method="POST">
+                <div class="modal-body">
+                    @csrf
+                    @method('DELETE')
+
+                    <div class ="form-group">
+                        <p> Sure Delete</p>
+                        @csrf
+                        <input type="hidden" name ="id" id="id">
+                    </div>
+
+                </div>
+                <div class="modal footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">{{ __('words.close') }}</button>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal">{{ __('words.delete') }}</button>
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
 @endsection
+@push('javascripts')
+    <script type='text/javascript'>
+        new DataTable('#table_id', {
+            ajax: {
+                url: "{{ route('dashboard.categories.getall') }}",
+                type: 'get'
+            },
+
+            processing: true,
+            serverSide: true,
+
+        });
+
+
+        // $(document).ready(function() {
+        //     var table = $('#table_id').DataTable({
+        //         processing: true,
+        //         serverSide: true,
+        //         ajax: "{{ route('dashboard.categories.getall') }}",
+        //         columns: [{
+        //                 data: 'name',
+        //                 name: 'name'
+        //             },
+        //             {
+        //                 data: 'image',
+        //                 name: 'image'
+        //             },
+        //             {
+        //                 data: 'action',
+        //                 name: 'action'
+        //             },
+        //         ]
+        //     });
+
+        //     $('#table_id tbody').on('click', '#deleteBtn', function() {
+        //         var id = $(this).attr('data_id');
+        //         $('#deletemodal #id').val(id);
+        //     });
+        // });
+    </script>
+@endpush

@@ -22,10 +22,9 @@ Route::get("/admin", [IndexController::class,'index'])->name("admin");
 
 Route::group(["as"=> "dashboard."], function () {
     Route::put("settings/{setting}/update", [SettingController::class , "update"])->name("settings.update");
-    Route::get("/settings", [SettingController::class , 'index' ])->name("settings.index");
-    Route::get("categories/ajax", [SettingController::class , 'getall'])->name('category.getall');
-
-
+    Route::get("settings", [SettingController::class , 'index' ])->name("settings.index");
+    Route::get("categories/ajax", [SettingController::class , 'getall'])->name('categories.getall');
+    Route::delete("categories/delete", [SettingController::class , 'delete'])->name('categories.delete');
     Route::resource("categories", CategoryController::class);
 });
 

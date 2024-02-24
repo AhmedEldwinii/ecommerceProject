@@ -41,7 +41,11 @@
     {{--  Dropify  --}}
     <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/dist/dropify.css">
 
-    {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
+
+
+    {{-- DataTable Cdn --}}
+    <link href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -122,8 +126,8 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="{{ asset('dashboard') }}/assets/dist/img/user8-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
+                                <img src="{{ asset('dashboard') }}/assets/dist/img/user8-128x128.jpg"
+                                    alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -284,13 +288,18 @@
     {{-- file --}}
     <script src="{{ asset('dashboard') }}/assets/dist/codeply.js"></script>
 
-    {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
+    {{-- dataTable cdn --}}
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap4.min.js"></script>
+
+
+
 
     <script>
         $('.dropify').dropify();
     </script>
 
+    @stack('javascripts')
 </body>
 
 </html>
