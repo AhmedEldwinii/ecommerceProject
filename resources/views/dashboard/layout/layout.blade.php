@@ -19,8 +19,7 @@
         crossorigin="anonymous" />
 
 
-
-
+    {{-- bootstrap 5 --}}
 
     <!-- Tempusdominus Bootstrap /4 -->
     <link rel="stylesheet"
@@ -291,7 +290,6 @@
     {{-- dataTable cdn --}}
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap4.min.js"></script>
-
 
 
 

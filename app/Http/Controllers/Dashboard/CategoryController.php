@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\Categories\CategoryDeleteRequest;
+use App\Http\Requests\Dashboard\Categories\CategoryStoreRequest;
+use App\Services\CategoryService;
 use Yajra\DataTables\Facades\DataTables;
+
 
 
 
@@ -13,44 +17,33 @@ use Yajra\DataTables\Facades\DataTables;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $mainCategories = Category::where('parent_id',0)->orWhere('parent_id',null)->get();
-        $categories = Category::paginate(10);
-        return view("dashboard.categories.index" , compact('mainCategories','categories'));
+
+    private $categoryService;
+
+    public function __construct(CategoryService $categoryService){
+        $this->categoryService = $categoryService;
     }
 
-    /**
+    public function index()
+    {
+        $mainCategories = $this->categoryService->getMainCategories();
+        return view("dashboard.categories.index" , compact('mainCategories'));
+    }
+
+    /** 
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $mainCategories = Category::where('parent_id',0)->orWhere('parent_id',null)->get();
-        $categories = Category::paginate(10);
-        return view("dashboard.categories.create" , compact('mainCategories','categories') );
+        $mainCategories = app(CategoryService::class)->getMainCategories();
+        return view("dashboard.categories.create" , compact('mainCategories') );
     }
 
 
-    public function getall(){
+    public function getAll(){
 
-        $query = Category::select('*')->with('parents');
-        return DataTables::of($query)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-                return '<a href="' . route('dashboard.categories.edit', $row->id) . '" class="edit btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                        <button type="button" id="deleteBtn" data-id="' . $row->id .'" class="btn btn-danger mt-md-0 mt-2" data-bs-toggle="modal" data-bs-target="#deletemodal"><i class="fa fa-trash"></i></button>';
-            })
-            ->addColumn('parent', function ($row) {
-                return $row->parent == 0 ? 'Main category' : ($row->parent ? $row->parent->name : '');
-            })
-            ->addColumn('image', function ($row) {
-                return '<img src="'.asset($row->image).'" width="100px" height="100px">';
-            })
-            ->rawColumns(['parent', 'action', 'image'])
-            ->make(true);
+        return $this->categoryService->dataTable();
+
 
     }
 
@@ -59,9 +52,10 @@ class CategoryController extends Controller
 
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        $this->categoryService->store($request->validated());
+        return redirect()->route("dashboard.categories.index")->with('success' , 'Success add a new category');
     }
 
     /**
@@ -96,7 +90,10 @@ class CategoryController extends Controller
         //
     }
 
-    public function delete (Request $request){
-        dd($request->all());
+    public function delete (CategoryDeleteRequest $request){
+
+        Category::whereId($request->id)->delete();
+        return redirect()->route("dashboard.categories.index");
+
     }
 }
