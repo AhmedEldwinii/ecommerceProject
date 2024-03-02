@@ -29,7 +29,7 @@
                         <!-- form start -->
                         <form id="quickForm" action="{{ route('dashboard.categories.store') }}" method="POST"
                             enctype="multipart/form-data">
-                                 @csrf
+                            @csrf
                             @method('POST')
                             <div class="card-body">
                                 <div class="form-group">
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> Main category</label>
                                     <select name='parent_id' class="form-control" id="exampleInputEmail1">
-
+                                        <option value="">Main Category</option>
                                         @foreach ($mainCategories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach

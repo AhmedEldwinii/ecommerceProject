@@ -30,13 +30,15 @@
                             <th style="width: 20%">
                                 Name
                             </th>
-                            <th style="width: 30%">
+
+                            <th style="width: 20%">
                                 Image
                             </th>
-                            <th style="width: 5%" class="text-center">
-                                Status
+                            <th style="width: 20%">
+                                Parent
                             </th>
                             <th style="width: 20%">
+                                Status
                             </th>
                         </tr>
                     </thead>
@@ -99,12 +101,17 @@
                     {
                         data: 'image',
                         name: 'image'
+                    }, {
+
+                        data: 'parent',
+                        name: 'parent'
+
                     },
                     {
                         data: 'action',
                         name: 'action'
                     },
-                    {}
+
                 ]
             });
 

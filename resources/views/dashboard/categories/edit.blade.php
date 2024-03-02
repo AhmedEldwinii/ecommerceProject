@@ -1,7 +1,7 @@
 @extends('dashboard.layout.layout')
 
-@section('title1', 'Category Add')
-@section('title3', 'Category Add')
+@section('title1', 'Category Edit')
+@section('title3', 'Category Edit')
 
 @section('body')
     <section class="content">
@@ -15,29 +15,42 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm">
+                        <form id="quickForm" action="{{ route('dashboard.categories.update', $category->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('put')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Category name</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                        placeholder="category name">
+                                        placeholder="category name" value="{{ $category->name }}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1"> Main category</label>
-                                    <input type="text" name="main" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Main category">
-                                </div>
+
+                                @if ($category->child_count < 1)
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> Main category</label>
+                                        <select name='parent_id' class="form-control" id="exampleInputEmail1">
+                                            <option value="" @if ($category->parent_id == null) selected @endif>Main
+                                                Category</option>
+                                            @foreach ($mainCategories as $item)
+                                                <option value="{{ $category->id }}"
+                                                    @if ($item->id == $category->parent_id) selected @endif> {{ $item->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                @endif
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Photo</label>
-                                    <input class="form-control dropify" type="file" id="formFile" name="photo" data-default-file="">
+                                    <input class="form-control dropify" type="file" id="formFile" name="image"
+                                        data-default-file=" {{asset($category->image) }}">
                                 </div>
 
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="save" class="btn btn-primary">save</button>
+                                <button type="submit" class="btn btn-primary">save</button>
                             </div>
                         </form>
                     </div>

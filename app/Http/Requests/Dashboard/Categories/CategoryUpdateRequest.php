@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Requests\Dashboard\Categories;
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryStoreRequest extends FormRequest
+class CategoryUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +22,9 @@ class CategoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|unique:categories,name',
+            'name'=>'string',
             'parent_id'=>'nullable|exists:categories,id',
-            'image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048|required',
+            'image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
-
 }
