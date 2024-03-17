@@ -33,9 +33,12 @@
                                             <option value="" @if ($category->parent_id == null) selected @endif>Main
                                                 Category</option>
                                             @foreach ($mainCategories as $item)
-                                                <option value="{{ $category->id }}"
-                                                    @if ($item->id == $category->parent_id) selected @endif> {{ $item->name }}
-                                                </option>
+                                                @if ($item->id != $category->id)
+                                                    <option value="{{ $item->id }}"
+                                                        @if ($item->id == $category->parent_id) selected @endif>
+                                                        {{ $item->name }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -44,7 +47,7 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Photo</label>
                                     <input class="form-control dropify" type="file" id="formFile" name="image"
-                                        data-default-file=" {{asset($category->image) }}">
+                                        data-default-file=" {{ asset($category->image) }}">
                                 </div>
 
                             </div>
