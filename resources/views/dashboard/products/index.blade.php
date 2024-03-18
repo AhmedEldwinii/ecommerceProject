@@ -98,7 +98,7 @@
             $('#table_id').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('dashboard.products.getall')}}",
+                ajax: "{{ route('dashboard.products.getall') }}",
                 columns: [{},
                     {
                         data: 'name',
@@ -119,13 +119,14 @@
                         name: 'discount_price'
 
                     },
+                    {},
                     {
                         data: 'action',
                         name: 'action',
                         orderable: false,
                         searchable: false,
                     },
-                    {},
+
 
                 ]
             });

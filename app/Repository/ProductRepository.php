@@ -20,11 +20,11 @@ Class ProductRepository implements RepositoryInterface
     }
 
 
-    public function baseQuery($relations=[],$withcount=[])
+    public function baseQuery($relations=[],$withCount=[])
     {
        $query =  $this->product->select("*")->with($relations);
-       foreach($withcount as $key => $value){
-            $query->$withcount($value);
+       foreach($withCount as $key => $value){
+            $query->withCount($value);
        }
        return $query;
     }
