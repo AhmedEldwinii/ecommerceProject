@@ -40,10 +40,12 @@
     {{--  Dropify  --}}
     <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/dist/dropify.css">
 
-
-
     {{-- DataTable Cdn --}}
     <link href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    {{-- SELECT2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
 
 </head>
@@ -290,6 +292,10 @@
     {{-- dataTable cdn --}}
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap4.min.js"></script>
+
+    {{-- SELECT 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 
 

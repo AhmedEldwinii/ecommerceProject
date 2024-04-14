@@ -27,16 +27,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        @if ($errors->any())
-                            @csrf
-                            <div class="alert alert-danger" role="alert">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+
 
                         <form id="quickForm" action="{{ route('dashboard.products.store') }}" method="POST"
                             enctype="multipart/form-data">
@@ -59,7 +50,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Photo</label>
+                                    <label for="formFile" class="form-label">Main Photo</label>
                                     <input class="form-control dropify" type="file" id="formFile" name="image"
                                         data-default-file="">
                                 </div>
@@ -71,8 +62,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Product description</label>
-                                    <input type="text" name="description" class="form-control" id="exampleInputEmail1"
-                                        placeholder="product description">
+                                    <textarea type="text" name="description" class="form-control" id="exampleInputEmail1"
+                                        placeholder="product description"></textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -84,6 +75,23 @@
                                     <label for="exampleInputEmail1">Price after discount</label>
                                     <input type="number" name="discount_price" class="form-control" id="exampleInputEmail1"
                                         placeholder="price discount">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Quantity of product</label>
+                                    <input type="number" name="quantity" class="form-control" id="exampleInputEmail1"
+                                        placeholder="Quantity">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Colors for product</label>
+                                    <select class="form-control colors" multiple="multiple" name="colors[]"></select>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Photos of the product</label>
+                                    <input class="form-control dropify" type="file" id="formFile" name="images[]"
+                                        multiple data-default-file="">
                                 </div>
 
                             </div>
@@ -106,3 +114,11 @@
         </div><!-- /.container-fluid -->
     </section>
 @endsection
+
+@push('javascripts')
+    <script>
+        $('.colors').select2({
+            tags: true
+        });
+    </script>
+@endpush

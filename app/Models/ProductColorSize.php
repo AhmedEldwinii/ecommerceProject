@@ -11,7 +11,7 @@ class ProductColorSize extends Model
 
     protected $fillable = ['product_size_id', 'product_color_id', 'quantity', 'price_two', 'discount', 'status'] ;
 
-    protected $table = 'product_color_size';
+    protected $table = 'product_color_sizes';
 
     public function productSize(){
         return $this->belongsTo(ProductSize::class);

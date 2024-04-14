@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Site\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,10 +16,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.categories.edit');
-})->name('index');
+Route::get('/', [HomeController::class,'index'])->name('index');
+Route::get('/product/{name}', [HomeController::class,'index2'])->name('product.index');
+    
+
 
 Auth::routes();
-
-

@@ -26,13 +26,13 @@ class SettingUpdateRequest extends FormRequest
             'description' =>'string|nullable|max:100',
             'email' => 'email|nullable',
             'address'=> 'string|nullable',
-            'logo'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048|nullable',
-            'favicon'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048|nullable',
+            'logo'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:20120|nullable',
+            'favicon'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:20120|nullable',
             'phone'=> 'string|nullable',
             'facebook'=> 'string|nullable',
             'youtube'=> 'string|nullable',
             'twitter'=> 'string|nullable',
-            'instagram'=> 'string|nullable',    
+            'instagram'=> 'string|nullable',
 
         ];
     }

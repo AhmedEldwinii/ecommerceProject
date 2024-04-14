@@ -9,11 +9,11 @@ class ProductImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'product_color_size_id' , 'image'];
+    protected $fillable = [ 'product_id' , 'image'];
 
-    protected $table = 'product_image';
+    protected $table = 'product_images';
 
-    public function productColorSize(){
-        return $this->belongsTo(ProductColorSize::class);
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 }

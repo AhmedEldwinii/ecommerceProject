@@ -25,13 +25,13 @@
                 <table class="table table-striped" id = "table_id">
                     <thead>
                         <tr>
-                            <th style="width: 5%"></th>
+                            <th style="width: 1%"></th>
 
-                            <th style="width: 15%">
-                                Name
+                            <th style="width: 13%">
+                                Product Name
                             </th>
 
-                            <th style="width: 15%">
+                            <th style="width: 13%">
                                 Categories
                             </th>
                             <th style="width: 10%">
@@ -42,6 +42,9 @@
                             </th>
                             <th style="width: 10%">
                                 NO.Colors
+                            </th>
+                            <th style="width: 10%">
+                                Quantity
                             </th>
                             <th style="width: 10%">
                                 Status
@@ -111,15 +114,19 @@
 
                         data: 'price',
                         name: 'price'
-
                     },
                     {
-
                         data: 'discount_price',
                         name: 'discount_price'
-
                     },
-                    {},
+                    {
+                        data: 'product_color_count',
+                        name: 'product_color_count'
+                    },
+                    {
+                        data: 'quantity',
+                        name: 'quantity'
+                    },
                     {
                         data: 'action',
                         name: 'action',
