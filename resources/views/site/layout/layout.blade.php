@@ -137,7 +137,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="{{ asset('site') }}/shop-index.html"><img
+            <a class="site-logo" href="{{ route('index') }}"><img
                     src="{{ asset('site') }}/assets/corporate/img/logos/logo-shop-red.png"
                     alt="Metronic Shop UI"></a>
 
@@ -146,94 +146,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN CART -->
             <div class="top-cart-block">
                 <div class="top-cart-info">
-                    <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
-                    <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
+                    <a href="{{ route('cart.index') }}" class="top-cart-info-count">{{ Cart::instance('cart')->content()->count() }} items</a>
+                    <a href="{{ route('cart.index') }}" class="top-cart-info-value">{{ Cart::instance('cart')->total() }}</a>
                 </div>
-                <i class="fa fa-shopping-cart"></i>
-
-                <div class="top-cart-content-wrapper">
-                    <div class="top-cart-content">
-                        <ul class="scroller" style="height: 250px;">
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('site') }}/shop-item.html"><img
-                                        src="{{ asset('site') }}/assets/pages/img/cart-img.jpg"
-                                        alt="Rolex Classic Watch" width="37" height="34"></a>
-                                <span class="cart-content-count">x 1</span>
-                                <strong><a href="{{ asset('site') }}/shop-item.html">Rolex Classic Watch</a></strong>
-                                <em>$1230</em>
-                                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                            </li>
-                        </ul>
-                        <div class="text-right">
-                            <a href="{{ asset('site') }}/shop-shopping-cart.html" class="btn btn-default">View
-                                Cart</a>
-                            <a href="{{ asset('site') }}/shop-checkout.html" class="btn btn-primary">Checkout</a>
-                        </div>
-                    </div>
-                </div>
+                <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
             </div>
             <!--END CART -->
 
@@ -241,85 +157,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="header-navigation">
                 <ul>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="">
                             man
-
                         </a>
-
-                        <!-- BEGIN DROPDOWN MENU -->
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a href="{{ asset('site') }}/shop-product-list.html">Hi Tops <i
-                                        class="fa fa-angle-right"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ asset('site') }}/shop-product-list.html">Second Level Link</a>
-                                    </li>
-                                    <li><a href="{{ asset('site') }}/shop-product-list.html">Second Level Link</a>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#"
-                                            href="javascript:;">
-                                            Second Level Link
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="{{ asset('site') }}/shop-product-list.html">Third Level
-                                                    Link</a></li>
-                                            <li><a href="{{ asset('site') }}/shop-product-list.html">Third Level
-                                                    Link</a></li>
-                                            <li><a href="{{ asset('site') }}/shop-product-list.html">Third Level
-                                                    Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="{{ asset('site') }}/shop-product-list.html">Running Shoes</a></li>
-                            <li><a href="{{ asset('site') }}/shop-product-list.html">Jackets and Coats</a></li>
-                        </ul>
-                        <!-- END DROPDOWN MENU -->
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                             kids
                         </a>
-
-                        <!-- BEGIN DROPDOWN MENU -->
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a href="{{ asset('site') }}/shop-product-list.html">Hi Tops <i
-                                        class="fa fa-angle-right"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ asset('site') }}/shop-product-list.html">Second Level Link</a>
-                                    </li>
-                                    <li><a href="{{ asset('site') }}/shop-product-list.html">Second Level Link</a>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#"
-                                            href="javascript:;">
-                                            Second Level Link
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="{{ asset('site') }}/shop-product-list.html">Third Level
-                                                    Link</a></li>
-                                            <li><a href="{{ asset('site') }}/shop-product-list.html">Third Level
-                                                    Link</a></li>
-                                            <li><a href="{{ asset('site') }}/shop-product-list.html">Third Level
-                                                    Link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="{{ asset('site') }}/shop-product-list.html">Running Shoes</a></li>
-                            <li><a href="{{ asset('site') }}/shop-product-list.html">Jackets and Coats</a></li>
-                        </ul>
-                        <!-- END DROPDOWN MENU -->
                     </li>
-
-
-
                     </a>
-
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
@@ -643,6 +490,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
+    @stack('scripts')
 </body>
 <!-- END BODY -->
 

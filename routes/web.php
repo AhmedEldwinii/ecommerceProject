@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +19,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('index');
-Route::get('/product/{name}', [HomeController::class,'index2'])->name('product.index');
-    
+Route::get('/category/{name}', [HomeController::class,'index2'])->name('product.index');
+Route::get('/product/{id}',[ProductController::class,'show'])->name('product.show');
+Route::get('/cart' , [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/store' , [CartController::class, 'addToCart'])->name('cart.store');
+Route::put('/cart/update' ,[CartController::class, 'updateCart' ])->name('cart.update');
+Route::delete('/cart/remove' ,[CartController::class, 'removeItem'])->name('cart.remove');
+Route::delete('/cart/clear' ,[CartController::class, 'clearCart'])->name('cart.clear');
+
 
 
 Auth::routes();

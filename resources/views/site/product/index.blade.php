@@ -110,10 +110,10 @@
                                         <div>
                                             <a href="{{ asset($product->image) }}"
                                                 class="btn btn-default fancybox-button">Zoom</a>
-                                            <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                                            <a href="{{ route('product.show', $product->id)}}" class="btn btn-default fancybox-fast-view">View</a>
                                         </div>
                                     </div>
-                                    <h3><a href="shop-item.html">{{ $product->name }}</a></h3>
+                                    <h3><a href="{{ route('product.show', $product->id)}}"> {{ $product->name }}</a></h3>
                                     <div class="pi-price">{{ $product->price }}</div>
                                     <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
                                 </div>
